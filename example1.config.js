@@ -9,7 +9,7 @@ module.exports = {
    }
 
 
-   //without sticky-session
+  //without sticky-session
   //  module.exports = {
   //   apps : [{
   //     name        : "myapp",
