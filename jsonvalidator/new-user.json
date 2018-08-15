@@ -1,0 +1,31 @@
+{
+    "title": "new user",
+    "description": "describes properties required to create a user",
+    "type": "object",
+    "properties": {
+      "tname": {
+        "type": "string",
+        "description": "firstname of the account user",
+        "pattern": "^[a-zA-Z ]*$"
+      },
+      "temail": {
+        "type": "string",
+        "description": "email of the account user",
+        "format": "email"
+      },
+      "tdate": {
+        "type": "string",
+        "description": "date of birth of account",
+        "format": "date"
+      },
+      "tpassword": {
+        "type": "string",
+        "description": "password of account"
+      },
+      "tconfpassword": {
+        "type": "string",
+        "description": "password of account"
+      }
+    },
+    "required": ["tname", "temail", "tdate","tpassword","tconfpassword"]
+  }

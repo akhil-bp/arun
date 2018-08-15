@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registration Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<%= baseUrl %>stylesheets/bootstrap.min.css">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+
+</head>
+
+<body class="text-info">
+    <div class="container w-50">
+        <form method="POST" class="">
+            <h1 class="text-center">Delete User</h1>
+            <p class="text-center">
+                <!-- <% if(locals.success){ %>
+    user details successfully saved
+<% } else{ %>
+    please enter valid datas
+<% } %>
+<% 
+if(locals.errors){    
+    errors.forEach(function(e){ 
+%>
+    <div><%= e.path + " " + e.message %></div>
+<% 
+    }); 
+}
+%> -->
+            </p>
+            <div class="form-group">
+                <label class="">Name:</label>
+                <div class="">
+                    <input type="text" name="tname" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="">Email:</label>
+                <div class="">
+                    <input type="text" name="temail" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="">Date of birth</label>
+                <div class="">
+                    <input type="text" name="tdate" class="form-control" id="datepicker">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="">ROLE</label>
+                <select class="form-control">
+                    <option value="0">user</option>
+                    <option value="1">admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="">STATUS</label>
+                <select class="form-control">
+                    <option value="0">active</option>
+                    <option value="1">not active</option>
+                </select>
+            </div>
+            <input type="submit" value="update" class="btn btn-warning">
+            <input type="reset" class="btn btn-warning">
+        </form>
+    </div>
+</body>
+
+</html>

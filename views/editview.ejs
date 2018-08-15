@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>users</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="<%= baseUrl %>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="<%= baseUrl %>vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Custom CSS -->
+    <link href="<%= baseUrl %>dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="<%= baseUrl %>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="<%= baseUrl %>logout">
+                                <i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> users
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<%= baseUrl %>users">users list</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <h1 class="page-header">User Updation</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row ">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Please Fill Carefully
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form" method="post">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input class="form-control" name="tname" value="<%= locals.user ? user.name : '' %>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>E-mail</label>
+                                            <input class="form-control" name="temail" value="<%= locals.user ? user.email : '' %>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Data Of Birth</label>
+                                            <input class="form-control" name="tdate" id="datepicker" value="<%= locals.user ? user.date : '' %>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select class="form-control" name = "tstatus">
+                                                <option value= "1" <%= user.status === 1 ? "selected" : '' %> >active</option>
+                                                <option value= "2" <%= user.status === 2 ? "selected" : '' %> >inactive</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Role</label>
+                                            <select class="form-control" name = "trole">
+                                                <option value = "0" <%= user.role === 0 ? "selected" : '' %> >user</option>
+                                                <option value = "1" <%= user.role === 1 ? "selected" : '' %> >admin</option>
+                                            </select>
+                                        </div>
+                                        <!-- <div class="form-group">
+                                            <label>Photo</label>
+                                            <input class="form-control" type="file" name="image">
+                                        </div> -->
+                                        <button type="submit" class="btn btn-primary">update</button>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Please Fill Carefully
+                        </div>
+                        <div class="panel-body">
+                            <form method="POST" id="uploadForm" enctype="multipart/form-data" action="<%= baseUrl %>users/profile-image-upload/<%= user._id %>">
+                                <!-- passing 2 values _id and profilePicFile -->
+                                <img src="<%= baseUrl %>uploads/<%= locals.user ? user.profilePicFile : '' %>" id="greatphoto" width="100px" height="100px"
+                                />
+                                <div class="form-group">
+                                    <label>Photo</label>
+                                    <input class="form-control" type="file" name="image">
+                                </div>
+                                <input id="tempImage" type="hidden" value="<%= locals.user ? user.profilePicFile : '' %>" name="deleteold">
+                                <input type="submit" value="Upload Image" name="submit">
+                                <br/>
+                                <br/>
+
+                                <span id="status"></span>
+                                <span id="status1"></span>
+                                <span id="status2"></span>
+                                <form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- <script type="text/javascript">
+        function clicked() {
+            window.open("http://localhost:3000/users/edit/<%= locals.user ? user._id : '' %>","_self");
+        }
+    </script>  -->
+    <!-- jQuery -->
+    <script src="<%= baseUrl %>vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<%= baseUrl %>vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="<%= baseUrl %>vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="<%= baseUrl %>dist/js/sb-admin-2.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+
+    <script>  
+        var baseUrl = "<%= baseUrl %>";//add this within a <script>
+        //put all the jscript files in another file and give a link here.
+        $(document).ready(function () {
+            $("#datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd"
+            });
+            $('#uploadForm').submit(function () {
+                // $("#status").empty().text("File is uploading...");
+
+                $(this).ajaxSubmit({
+                    beforeSend: function (jqXHR) {
+                        var currentFile = $("input[name=image]").get(0).files[0];
+                        console.log(currentFile);
+                        console.log(currentFile.name);
+
+                        var re = /(?:\.([^.]+))?$/;
+                        var ext = re.exec(currentFile.name)[1];
+                        console.log(currentFile.size);
+                        var sz = currentFile.size;
+                        var arr = ["png", "jpg", "jpeg", "gif"];
+                        if (arr.includes(ext) === false) {
+                            jqXHR.abort();
+                            $("#status1").text("please check your image extension");
+                        }
+                        else if (sz > 1e+6) {//https://www.google.co.in/search?q=1b+what+mb&rlz=1C1CHBF_enIN802IN802&oq=1b+what+mb&aqs=chrome..69i57j0.7701j0j4&sourceid=chrome&ie=UTF-8
+                            jqXHR.abort();
+                            $("#status2").text("please upload images lessthan 1mb");
+                        }
+                        // if(arr.includes(ext) === false && sz > 1e+6) {
+                        //     jqXHR.abort();
+                        // }
+                        // // jqXHR.abort();
+                        // $("#status").text("file uploaded successfully");
+                    },
+                    error: function (xhr) {
+                        status('Error: ' + xhr.status);
+                    },
+
+                    success: function (response) {
+                        var n = response.profilePicFile;
+                        console.log(n);
+                        $("#tempImage").attr("value", response.profilePicFile);
+                        $("#greatphoto").attr("src", baseUrl + "uploads/" + response.profilePicFile);
+                        $("#status").empty().text("file uploaded successfully");
+                    }
+                });
+
+                return false;
+            });
+        });  
+    </script>
+</body>
+
+</html>

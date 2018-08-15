@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="<%= baseUrl %>stylesheets/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+        <h1 class="text-center">User Details</h1><br><br><br>         
+  <table class="table  table-hover">
+    <thead class=" btn-success">
+      <tr>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>DATE OF BIRTH</th>
+        <th>STATUS</th>
+        <th>ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody id="ajaxdata"><!--values coming from below script-->
+       <tr>
+         <td id="gif" colspan="5"><img src="<%= baseUrl %>images/ajax-loader.gif" alt="loading"/></td>
+       </tr> 
+      
+    </tbody>
+  </table>
+</div>
+</body>
+  <script type= "text/javascript">
+    var baseUrl = '<%= baseUrl %>';
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="<%= baseUrl %>javascripts/userview.js"></script> <!--call to user view-->
+   
+</html>

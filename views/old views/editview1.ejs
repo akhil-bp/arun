@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registration Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<%= baseUrl %>stylesheets/bootstrap.min.css">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="container w-50">
+        <form method="POST" class="">
+            <h1 class="text-center">User Details</h1>
+
+            <div class="form-group">
+                <label class="">Name:</label>
+                <div class="">
+                    <input type="text" name="tname" class="form-control" value="<%= locals.user ? user.name : '' %>" placeholder="Enter Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="">Email:</label>
+                <div class="">
+                    <input type="text" name="temail" class="form-control" value="<%= locals.user ? user.email : '' %>" placeholder="Enter Email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="">Date of birth</label>
+                <div class="">
+                    <input type="text" name="tdate" class="form-control" value="<%= locals.user ? user.date : '' %>" id="datepicker">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="">ROLE</label>
+                <select class="form-control">
+                    <option value="1" <%= user.role === 1 ? "selected" : '' %>>user</option>
+                    <option value="2" <%= user.role === 2 ? "selected" : '' %>>admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="">STATUS</label>
+                <select class="form-control" name="tstatus">
+                    <option value="1" <%= user.status === 1 ? "selected" : '' %>>active</option>
+                    <option value="0" <%= user.status === 0 ? "selected" : '' %>>inactive</option>
+                </select>
+            </div>
+
+            <input type="submit" value="update" class="btn btn-warning">
+            <input type="reset" class="btn btn-warning">
+        </form>
+    </div>
+</body>
+
+</html>
